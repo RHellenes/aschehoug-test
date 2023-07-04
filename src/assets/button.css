@@ -1,0 +1,20 @@
+.button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  background-color: hsla(160, 100%, 37%, 1);
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  transition: 0.4s;
+  border: 2px solid hsla(160, 100%, 37%, 1);
+}
+.button:hover {
+  background-color: hsla(160, 100%, 37%, 0.8);
+}
+.button--secondary {
+  background-color: hsla(0, 0%, 100%, 1);
+  color: hsla(160, 100%, 37%, 1);
+}
