@@ -26,7 +26,8 @@ test:
         # - wait-on http://localhost:3000
     test:
       commands:
-        - 'npm run cy:test'
+        - 'npm run test:unit'
+        - 'npm run test:e2e'
     # postTest:
     #   commands:
     #     - npx mochawesome-merge cypress/report/mochawesome-report/mochawesome*.json > cypress/report/mochawesome.json
