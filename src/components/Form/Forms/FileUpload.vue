@@ -13,18 +13,18 @@
 
           <div class="file__bottom-container">
             <div>
-              <p>Filnavn: {{ file?.name + ' | ' + calculateSizeIntoBytesWithUnits(file?.size) || '' }}</p>
+              <p>Filnavn: {{ file?.name + ' | ' + shortenByteAndAddUnit(file?.size) || '' }}</p>
             </div>
             <div class="file__bottom-container__button-group">
               
               <label 
-              for="fileInput"
+              for="file__input"
               class="button" 
               >
               <span> Velg fil </span>
             </label>
-            <input type="file" class="sr-only" id="fileInput" @change="handleFileChange" :placeholder="file ? file.name : 'Ingen fil valgt'" :accept="allowedFileTypes.join(', ')"/>
-            <button class="button button--secondary" @click.prevent="file = null">Fjern video</button>
+            <input type="file" class="sr-only" id="file__input" @change="handleFileChange" :placeholder="file ? file.name : 'Ingen fil valgt'" :accept="allowedFileTypes.join(', ')"/>
+            <button class="button button--secondary file__reset"  @click.prevent="file = null">Fjern video</button>
           </div>
         </div>
       </DragAndDropContainer> 
@@ -35,8 +35,9 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import DragAndDropContainer from './DragAndDropContainer.vue';
-import AssetPreviewContainer from './AssetPreviewContainer.vue';
+import DragAndDropContainer from '@/components/Form/Elements/DragAndDropContainer.vue';
+import AssetPreviewContainer from '@/components/Form/Elements/AssetPreviewContainer.vue';
+import { shortenByteAndAddUnit } from '@/utils/helpers';
 
 interface IProps {
   allowedFileTypes?: string[]

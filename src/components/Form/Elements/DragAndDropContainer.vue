@@ -31,7 +31,8 @@ const isTypeAllowed = ref(true)
 
 const setDragActive = (event:DragEvent) => {    
   dragActive.value = true
-  isTypeAllowed.value = fileTypeGuard(props.allowedFileTypes || [], event.dataTransfer.items[0].type) 
+  const itemType = event.dataTransfer?.items[0].type || null
+  isTypeAllowed.value = !event.dataTransfer ? fileTypeGuard(props.allowedFileTypes || [], itemType) : false
 }
 
 // reset visual feedback for drag and drop
@@ -44,8 +45,10 @@ const setDragInactive = () => {
 const captureFile = (event: DragEvent) => {
   // Remove drag active class
   setDragInactive()
+  const itemType = event.dataTransfer?.items[0].type || null
+
   // Check if file is allowed
-  if(!fileTypeGuard(props.allowedFileTypes || [], event.dataTransfer.items[0].type)) return
+  if(!fileTypeGuard(props.allowedFileTypes || [], itemType)) return
   const files = event.dataTransfer?.files
   if (files) {
     emit('update', files[0])

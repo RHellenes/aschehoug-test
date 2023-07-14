@@ -1,10 +1,16 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
+import Login from '@/components/Login.vue'
+import LogOut from './components/LogOut.vue';
+
+import { useAuth0 } from '@auth0/auth0-vue';
+const { isAuthenticated } = useAuth0();
 </script>
 
 <template>
     <header>
-      <button>Login</button>
+      <Login v-if="!isAuthenticated"/>
+      <LogOut v-else/>
     </header>
     
     <RouterView />
@@ -17,8 +23,7 @@ header {
   align-items: center;
   justify-content: flex-end;
   width: 100%;
-  padding: 1rem;
-  background-color: #f5f5f5;
+  padding: 1rem;  
   border-bottom: 1px solid #e5e5e5;
 }
 </style>

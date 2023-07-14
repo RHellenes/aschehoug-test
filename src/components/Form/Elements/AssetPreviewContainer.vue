@@ -38,7 +38,7 @@ try {
       if (filePreviewArea.value) {
         filePreviewArea.value.innerHTML = `
           <video controls class="file__preview-area__video">
-            <source src="${reader.result}" type="${props.file.type}">
+            <source src="${reader.result}" type="${props.file?.type}">
           </video>
         `
       }
