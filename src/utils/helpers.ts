@@ -17,6 +17,7 @@ export const fileSizeGuard = (maxFileSize: number, sizeUnit: UnitTypes, fileSize
 export const shortenByteAndAddUnit = (size: number | undefined):string => {
   let unitIndex = 0, fileSize = size || 0
 
+  
   while (fileSize >= 1024 && ++unitIndex) fileSize = fileSize / 1024 
   return (fileSize.toFixed(fileSize >= 10 || unitIndex < 1 ? 0 : 1) + ' ' + units[unitIndex])
 } // 10 MB or 1.2 KB
