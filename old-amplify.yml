@@ -18,15 +18,11 @@ test:
   phases:
     preTest:
       commands:
-        - npm ci
-        - npm install -g pm2
-        - npm install -g wait-on
-        - pm2 start npm -- run dev
-        - wait-on http://localhost:5173
+        - npm install
+        - npm run dev
     test:
       commands:
-        - 'npx cypress run '
-
+        - 'npm run test:e2e'
   artifacts:
     baseDirectory: cypress
     files:
